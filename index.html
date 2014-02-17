@@ -20,7 +20,10 @@
       $(document).ready(function(){
 
         var lastIndex = 0;
-        //$("abbr.timeago").timeago();
+        
+        //alert($('.message').length);
+
+
         var update = function(){
 
 
@@ -55,9 +58,21 @@
           lastIndex = lastIndex + i;
         };
 
-        setInterval(update,3000);
+        //setInterval(update,3000);
 
         update();
+
+        $('.message').on('mouseenter',function(event){
+
+          event.preventDefault();
+          $(this).addClass('highlighted');
+        });
+
+        $('.message').on('mouseleave',function(event){
+
+          event.preventDefault();
+          $(this).removeClass('highlighted');
+        });
 
       });
 
