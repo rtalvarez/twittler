@@ -40,5 +40,14 @@ body{
   background-color: #8ed6ff;
   border-color: 1px solid #967;
   font-style: bold;
+  text-decoration: underline;
 
+}
+
+.back{
+  text-align: center;
+}
+
+.info{
+  text-align: center;
 }
