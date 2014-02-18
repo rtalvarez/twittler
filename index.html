@@ -29,7 +29,7 @@
         
         //});
 
-        console.log('this is out of ready handler');
+        //console.log('this is out of ready handler');
 
         var lastIndex = 0;
         
@@ -75,7 +75,7 @@
         
 
         var hidden;
-        $('.message').on('click',function(event){
+        $(document).on('click','.message',function(event){
 
           event.preventDefault();
           var user = $(this).data('user');
@@ -115,22 +115,15 @@
         $('.update').on('click',update);
 
 
-        $('.message').on('mouseenter',function(event){
+        $(document).on('mouseenter','.message',function(event){
 
           event.preventDefault();
           $(this).addClass('highlighted');
-          //$(this).stop().animate({
-                //8ed6ff
-            //   backgroundColor: 'blue',
-               //'border-color': '1px solid #967',
-               //'font-style': 'bold',
-               //'text-decoration': 'underline'
 
-           //},{duration:500});
 
         });
 
-        $('.message').on('mouseleave',function(event){
+        $(document).on('mouseleave','.message',function(event){
 
           event.preventDefault();
           $(this).removeClass('highlighted');
