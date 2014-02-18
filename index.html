@@ -88,9 +88,10 @@
 
           event.preventDefault();
           var user = $(this).data('user');
-          //var hidden;
+          
 
           if (!hidden){
+            $('.title').text('Twittler (@' + user +')');
             $('.message').filter(function(){
 
               hidden = true;
@@ -98,7 +99,7 @@
 
             }).hide();
           }else{
-
+            $('.title').text('Twittler (@cilop)');
             $('.message').filter(function(){
 
               hidden = false;
