@@ -2,11 +2,11 @@
 <html>
   <head>
     <title>Twittler</title>
-    <script src="jquery.js"></script>
-    <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script-->
-    <script src="moment.js" type="text/javascript"></script>
+    <!--script src="jquery.js"></script-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <!--script src="moment.js" type="text/javascript"></script-->
     <script src="data_generator.js"></script>
-    <!--script src="jquery.timeago.js"></script-->
+    <script src="jquery.timeago.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -21,20 +21,16 @@
 
       $(document).ready(function(){
 
+        $('abbr.timeago').timeago();
         var lastIndex = 0;
         
-        //alert($('.message').length);
-
-
         var update = function(){
 
-
-          console.log(streams.home.length);
           var $body = $('.home');
-          //$body.html('');
-          //console.log(lastIndex);
           var index = streams.home.length - 1;
           var i = 0;
+          
+
           while(index >= lastIndex){
             var tweet = streams.home[index];
             var date = tweet.created_at;
@@ -46,7 +42,7 @@
             $tweet.prependTo($body);
 
             $tweet = $('<p class="sent"></p>');
-            $tweet.text('sent ' + moment(date).fromNow());
+            $tweet.text('sent timeago');
             //console.log(moment(date).fromNow());
             //$tweet.attr('title','Title');
 
@@ -64,10 +60,6 @@
 
         update();
 
-        $('.message').on('click',function(){
-
-          window.location = './users/' + $(this).data('user') + '.html';
-        });
 
         $('.message').on('mouseenter',function(event){
 
