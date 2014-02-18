@@ -83,16 +83,28 @@
 
         });
 
+        var hidden;
         $('.message').on('click',function(event){
 
           event.preventDefault();
           var user = $(this).data('user');
+          //var hidden;
 
-          $('.message').filter(function(){
+          if (!hidden){
+            $('.message').filter(function(){
 
-            return $(this).data('user') !== user;
+              hidden = true;
+              return $(this).data('user') !== user;
 
-          }).toggleClass('removed');
+            }).hide();
+          }else{
+
+            $('.message').filter(function(){
+
+              hidden = false;
+              return $(this).data('user') !== user;
+            }).show();
+          }
 
           //console.log($test);
           //$(this).toggleClass('removed');
