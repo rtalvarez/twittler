@@ -16,6 +16,11 @@ body{
 
 .message{
 
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
   border: 2px dashed;
   padding: 10px;
   margin: 7px;
@@ -36,6 +41,12 @@ body{
 }
 
 .highlighted {
+
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
 
   background-color: #8ed6ff;
   border-color: 1px solid #967;
