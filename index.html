@@ -13,7 +13,7 @@
   <body>
 
   <h1 class="title">Twittler (@cilop)</h1>
-  <h2 class="info"> - home - </h2>
+  <h2 class="update"> - update tweets ! - </h2>
   <div class="home"></div>
 
     <script>
@@ -23,11 +23,11 @@
 
         $('abbr.timeago').timeago();
 
-        jQuery.timeago.settings.allowFuture = true;
+
 
         //setInterval(update,3000);
         
-        });
+        //});
 
         console.log('this is out of ready handler');
 
@@ -70,18 +70,9 @@
         update();
 
 
-        $('.message').on('mouseenter',function(event){
 
-          event.preventDefault();
-          $(this).addClass('highlighted');
-        });
 
-        $('.message').on('mouseleave',function(event){
-
-          event.preventDefault();
-          $(this).removeClass('highlighted');
-
-        });
+        
 
         var hidden;
         $('.message').on('click',function(event){
@@ -91,25 +82,54 @@
           
 
           if (!hidden){
-            $('.title').text('Twittler (@' + user +')');
+            //$('.title').text('Twittler (@' + user +')');
+            $('.title').fadeOut(500, function(){
+
+              $(this).text('Twittler (@' + user + ')').fadeIn(500);
+            });
+
             $('.message').filter(function(){
 
               hidden = true;
               return $(this).data('user') !== user;
 
-            }).hide();
+            }).fadeOut(600);
           }else{
-            $('.title').text('Twittler (@cilop)');
+            //$('.title').text('Twittler (@cilop)');
+            $('.title').fadeOut(500, function(){
+
+              $(this).text('Twittler (@cilop)').fadeIn(500);
+            });
             $('.message').filter(function(){
 
               hidden = false;
               return $(this).data('user') !== user;
-            }).show();
+            }).fadeIn(600);
           }
 
           //console.log($test);
           //$(this).toggleClass('removed');
         });
+
+
+        $('.update').on('click',update);
+
+
+        $('.message').on('mouseenter',function(event){
+
+          event.preventDefault();
+          $(this).addClass('highlighted');
+
+        });
+
+        $('.message').on('mouseleave',function(event){
+
+          event.preventDefault();
+          $(this).removeClass('highlighted');
+
+        });
+
+      });
 
     </script>
   </body>
