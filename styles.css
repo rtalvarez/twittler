@@ -3,13 +3,9 @@ body{
   color : #322AFF;
   background: #D3E3FF;
   font-size: larger;
-  font-family: fantasy;
-  float: left;
   padding: 10px;
   border: 2px solid;
-  margin: 10px;
-  border-color: #30F;
-  width: 1200px;
+  margin: 10px 10px 10px 10px auto;
 
 
 }
@@ -34,6 +30,7 @@ body{
 
 .title{
 
+  /*position: fixed;*/
   font-weight: bolder;
   font-family: cursive;
   text-align: center;
