@@ -20,7 +20,8 @@
 
     <script>
 
-
+      //idea: haz que update() reciba un arg = el username, y que updatee los mensaje ssolo si son de ese username
+      // si username es undefined debe desplegar todos ls mensajes
       $(document).ready(function(){
 
         var lastIndex = 0;
@@ -35,20 +36,14 @@
           while(index >= lastIndex){
             var tweet = streams.home[index];
             var unix_ts = moment(tweet.created_at).unix();
-            //console.log(date);
-            //date.setHours(date.getHours() - date.getTimezoneOffset() / 60);
             var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(400);
 
             $tweet.text(' @' + tweet.user + ': ' + tweet.message);
 
-            //$tweet.prependTo($body);
             $tweet.prependTo($body);
 
             $tweet = $('<p class="sent"> sent <span data-livestamp="' + unix_ts + '"</span></p>').hide().fadeIn(400);
             
-            //$tweet.text('sent timeago');
-            //console.log(moment(date).fromNow());
-            //$tweet.attr('title','Title');
 
             $tweet.appendTo($('.message').first());
 
@@ -60,7 +55,7 @@
           lastIndex = lastIndex + i;
         };
 
-        //setInterval(update,3000);
+        //setInterval(update,500);
 
         update();
 
