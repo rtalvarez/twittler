@@ -14,7 +14,8 @@
   <body>
 
   <h1 class="title">Twittler (@cilop)</h1>
-  <h2 class="update"> - update tweets ! - </h2>
+  <h2 class="update"> Update ! </h2>
+  
   <div class="home"></div>
 
     <script>
@@ -22,7 +23,7 @@
 
       $(document).ready(function(){
 
-
+        $('.clicked').hide();
         //setInterval(update,3000);
         
         //});
@@ -110,7 +111,19 @@
         });
 
 
-        $('.update').on('click',update);
+        $('.update').on('click',function(){
+
+          update();
+          $(this).text('Done !');
+          $(this).fadeOut(500);
+
+          $(this).fadeIn(function(){
+
+            $(this).text(' Update !');
+          });
+
+
+        });
 
 
         $(document).on('mouseenter','.message',function(event){
