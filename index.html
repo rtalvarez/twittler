@@ -23,13 +23,6 @@
 
       $(document).ready(function(){
 
-        $('.clicked').hide();
-        //setInterval(update,3000);
-        
-        //});
-
-        //console.log('this is out of ready handler');
-
         var lastIndex = 0;
         
         var update = function(){
@@ -44,9 +37,11 @@
             var unix_ts = moment(tweet.created_at).unix();
             //console.log(date);
             //date.setHours(date.getHours() - date.getTimezoneOffset() / 60);
-            var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>");
+            var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(200);
 
             $tweet.text(' @' + tweet.user + ': ' + tweet.message);
+
+            //$tweet.prependTo($body);
             $tweet.prependTo($body);
 
             $tweet = $('<p class="sent"> sent <span data-livestamp="' + unix_ts + '"</span></p>');
