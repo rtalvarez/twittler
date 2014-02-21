@@ -37,14 +37,15 @@
             var unix_ts = moment(tweet.created_at).unix();
             //console.log(date);
             //date.setHours(date.getHours() - date.getTimezoneOffset() / 60);
-            var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(200);
+            var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(400);
 
             $tweet.text(' @' + tweet.user + ': ' + tweet.message);
 
             //$tweet.prependTo($body);
             $tweet.prependTo($body);
 
-            $tweet = $('<p class="sent"> sent <span data-livestamp="' + unix_ts + '"</span></p>');
+            $tweet = $('<p class="sent"> sent <span data-livestamp="' + unix_ts + '"</span></p>').hide().fadeIn(400);
+            
             //$tweet.text('sent timeago');
             //console.log(moment(date).fromNow());
             //$tweet.attr('title','Title');
@@ -69,7 +70,8 @@
         
 
         var hidden;
-        $(document).on('click','.message',function(event){
+
+        var hide_tweets = function(event){
 
           event.preventDefault();
           var user = $(this).data('user');
@@ -103,7 +105,14 @@
 
           //console.log($test);
           //$(this).toggleClass('removed');
-        });
+        };
+
+
+        
+
+        $(document).on('click','.message',hide_tweets);
+
+
 
 
         $('.update').on('click',function(){
