@@ -14,7 +14,7 @@
   <body>
 
   <h1 class="title">Twittler (@cilop)</h1>
-  <h2 class="update"> Update ! </h2>
+  <h2 class="update"> Stop it! </h2>
   
   <div class="home"></div>
 
@@ -23,18 +23,15 @@
       //idea: haz que update() reciba un arg = el username, y que updatee los mensaje ssolo si son de ese username
       // si username es undefined debe desplegar todos ls mensajes
       $(document).ready(function(){
-
-        var lastIndex = 0;
         
         var update = function(){
 
           var $body = $('.home');
           var index = streams.home.length - 1;
-          var i = 0;
-          
 
-          while(index >= lastIndex){
+          while(index >= 0){
             var tweet = streams.home[index];
+            streams.home.splice(index,1);
             var unix_ts = moment(tweet.created_at).unix();
             var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(400);
 
@@ -49,20 +46,11 @@
 
 
             index--;
-            i++;
 
           }
-          lastIndex = lastIndex + i;
         };
 
-        //setInterval(update,500);
-
-        update();
-
-
-
-
-        
+        var timer = setInterval(update,500);
 
         var hidden;
 
@@ -86,7 +74,6 @@
 
             }).fadeOut(600);
           }else{
-            //$('.title').text('Twittler (@cilop)');
             $('.title').fadeOut(500, function(){
 
               $(this).text('Twittler (@cilop)').fadeIn(500);
@@ -98,8 +85,6 @@
             }).fadeIn(600);
           }
 
-          //console.log($test);
-          //$(this).toggleClass('removed');
         };
 
 
@@ -112,16 +97,32 @@
 
         $('.update').on('click',function(){
 
-          update();
-          $(this).text('Done !');
-          $(this).fadeOut(500);
+          var self = $(this);
+          self.text('Done !');
+          self.fadeOut(500);
 
-          $(this).fadeIn(function(){
+          if (self.hasClass('stopped')){
 
-            $(this).text(' Update !');
-          });
+            timer = setInterval(update,500);
+            self.fadeIn(function(){
+
+              self.text('Stop it!');
+            });
+
+            self.removeClass('stopped');
 
 
+          }else{
+
+            clearTimeout(timer);
+            self.fadeIn(function(){
+
+              self.text('Start it!');
+            });
+
+            self.addClass('stopped');
+          }
+          
         });
 
 
