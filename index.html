@@ -16,6 +16,7 @@
   <h1 class="title"></h1>
   <input class="draft" type="text"/> <h2 class="send"> Tweetl !</h2>
   <h2 class="update"> Stop it! </h2>
+  <h2 class="credits"> Credits! </h2>
   
   <div class="home"></div>
 
@@ -33,12 +34,14 @@
 
           var $body = $('.home');
           var index = streams.home.length - 1;
+          var tweet;
+          var unix_ts;
+          var $tweet;
 
           while(index >= 0){
-            var tweet = streams.home[index];
-            streams.home.splice(index,1);
-            var unix_ts = moment(tweet.created_at).unix();
-            var $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(400);
+            tweet = streams.home.splice(index,1)[0];
+            unix_ts = moment(tweet.created_at).unix();
+            $tweet = $("<div class='message' data-user='" + tweet.user + "''></div>").hide().fadeIn(400);
 
             $tweet.text(' @' + tweet.user + ': ' + tweet.message);
 
@@ -178,7 +181,16 @@
           $self.text('Tweetl!');
         });
 
+
       });
+
+
+        $(document).on('click','.credits',function(){
+
+          console.log('clicled');
+          alert('Powered by:\njQuery\nmoment.js\nlivestamp.js\nHack Reactor\n\nThanks all!,\ncilop');
+
+        });
 
     });
 
