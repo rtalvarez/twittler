@@ -50,7 +50,7 @@
           }
         };
 
-        var timer = setInterval(update,500);
+
 
         var hidden;
 
@@ -63,7 +63,7 @@
           if (!hidden){
 
             clearTimeout(timer);
-            $('.update').fadeOut();
+            $('.update').addClass('stopped').text('Start it!').fadeOut();
             $('.title').fadeOut(500, function(){
 
               $(this).text('Twittler (@' + user + ')').fadeIn(500);
@@ -78,7 +78,7 @@
           }else{
 
             timer = setInterval(update,500);
-            $('.update').fadeIn();
+            $('.update').removeClass('stopped').text('Stop it!').fadeIn();
             $('.title').fadeOut(500, function(){
 
               $(this).text('Twittler (@cilop)').fadeIn(500);
@@ -146,6 +146,7 @@
 
         });
 
+      var timer = setInterval(update,500);
       });
 
     </script>
