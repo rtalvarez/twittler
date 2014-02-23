@@ -13,7 +13,8 @@
 
   <body>
 
-  <h1 class="title">Twittler (@cilop)</h1>
+  <h1 class="title"></h1>
+  <input class="draft" type="text"/> <h2 class="send"> Tweetl !</h2>
   <h2 class="update"> Stop it! </h2>
   
   <div class="home"></div>
@@ -22,6 +23,10 @@
 
       //idea: haz que update() reciba un arg = el username, y que updatee los mensaje ssolo si son de ese username
       // si username es undefined debe desplegar todos ls mensajes
+
+      var homeUser = prompt('What is your username?');
+      $('.title').text('Twittler (@' + homeUser + ')');
+
       $(document).ready(function(){
         
         var update = function(){
@@ -147,7 +152,33 @@
         });
 
       var timer = setInterval(update,500);
+
+      $(document).on('click','.send', function(){
+
+        var message = $('.draft').val();
+        $('.draft').val('');
+        var tweet_obj = {
+
+          'user' : homeUser,
+          'created_at' : moment()._d,
+          'message' : message
+        };
+
+        streams.home.push(tweet_obj);
+
+        $(this).fadeOut(function(){
+
+          $(this).text('Tweetled!');
+        });
+
+        $(this).fadeIn(function(){
+
+          $(this).text('Tweetl!');
+        });
+
       });
+
+    });
 
     </script>
   </body>
