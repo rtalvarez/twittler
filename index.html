@@ -61,7 +61,9 @@
           
 
           if (!hidden){
-            //$('.title').text('Twittler (@' + user +')');
+
+            clearTimeout(timer);
+            $('.update').fadeOut();
             $('.title').fadeOut(500, function(){
 
               $(this).text('Twittler (@' + user + ')').fadeIn(500);
@@ -74,6 +76,9 @@
 
             }).fadeOut(600);
           }else{
+
+            timer = setInterval(update,500);
+            $('.update').fadeIn();
             $('.title').fadeOut(500, function(){
 
               $(this).text('Twittler (@cilop)').fadeIn(500);
