@@ -155,6 +155,8 @@
 
       $(document).on('click','.send', function(){
 
+        var $self = $(this);
+
         var message = $('.draft').val();
         $('.draft').val('');
         var tweet_obj = {
@@ -166,14 +168,14 @@
 
         streams.home.push(tweet_obj);
 
-        $(this).fadeOut(function(){
+        $self.fadeOut(500,function(){
 
-          $(this).text('Tweetled!');
+          $self.text('Tweetled!');
         });
 
-        $(this).fadeIn(function(){
+        $self.fadeIn(500,function(){
 
-          $(this).text('Tweetl!');
+          $self.text('Tweetl!');
         });
 
       });
