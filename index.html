@@ -14,7 +14,8 @@
   <body>
 
   <h1 class="title"></h1>
-  <input class="draft" type="text"/> <h2 class="send"> Tweetl !</h2>
+  <input class="draft" type="text"></input> 
+  <h2 class="send"> Tweetl !</h2>
   <h2 class="update"> Stop it! </h2>
   <h2 class="credits"> Credits! </h2>
   
@@ -27,6 +28,7 @@
 
       var homeUser = prompt('What is your username?');
       $('.title').text('Twittler (@' + homeUser + ')');
+      $('.draft').val('Tweet something here ...');
 
       $(document).ready(function(){
         
@@ -101,7 +103,10 @@
         };
 
 
-        
+        $(document).on('click','.draft',function(){
+
+          $(this).val('');
+        });
 
         $(document).on('click','.message',hide_tweets);
 
@@ -156,7 +161,15 @@
 
       var timer = setInterval(update,500);
 
-      $(document).on('click','.send', function(){
+      $('.draft').keypress(function(event){
+
+        if (event.which === 13){
+
+          send_handler();
+        }
+      });
+
+      var send_handler = function(){
 
         var $self = $(this);
 
@@ -182,13 +195,15 @@
         });
 
 
-      });
+      };
+
+      $(document).on('click','.send', send_handler);
 
 
-        $(document).on('click','.credits',function(){
+      $(document).on('click','.credits',function(){
 
           console.log('clicled');
-          alert('Powered by:\njQuery\nmoment.js\nlivestamp.js\nHack Reactor\n\nThanks all!,\ncilop');
+          alert('Powered by:\nJavascript\njQuery\nmoment.js\nlivestamp.js\nHack Reactor\n\nThanks all!,\ncilop');
 
         });
 

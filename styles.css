@@ -15,9 +15,6 @@ body{
 
 .message{
 
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 
   border: 2px outset;
@@ -57,37 +54,23 @@ body{
 
 }
 
-h2{
+h2, .draft{
 
-  -moz-box-shadow:inset 0px 1px 0px 0px #c0d1fa;
-  -webkit-box-shadow:inset 0px 1px 0px 0px #c0d1fa;
   box-shadow:inset 0px 1px 0px 0px #c0d1fa;
   background-color:transparent;
-  -webkit-border-top-left-radius:20px;
-  -moz-border-radius-topleft:20px;
-  border-top-left-radius:20px;
-  -webkit-border-top-right-radius:20px;
-  -moz-border-radius-topright:20px;
   border-top-right-radius:20px;
-  -webkit-border-bottom-right-radius:20px;
-  -moz-border-radius-bottomright:20px;
   border-bottom-right-radius:20px;
-  -webkit-border-bottom-left-radius:20px;
-  -moz-border-radius-bottomleft:20px;
   border-bottom-left-radius:20px;
-  text-indent:0;
 
   border:1px solid #7aa6ff;
 
   display:inline-block;
-  font-family:Arial;
-  font-size:15px;
-  font-weight:bold;
-  font-style:normal;
+
+  font:15px normal 'Arial' bold;
+
   height:65px;
   line-height:65px;
   width:86px;
-  text-decoration:none;
   text-align:center;
   text-shadow:1px 1px 0px #c4d3ff;
 
@@ -99,6 +82,15 @@ h2{
 
 .info{
   text-align: center;
+}
+
+.draft{
+
+  text-align: left;
+
+  width: 400px;
+  height: 70px;
+  color: inherit;
 }
 
 
